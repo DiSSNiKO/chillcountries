@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 function CountryDetails(props){
     const { fetchedData } = props;
     const [deita, setDeita] = useState({});
+    const [ routeChanged, setRouteChanged] = useState(false)
+    useEffect(()=>{
+        if(routeChanged===true){
+            setRouteChanged(false);
+        }
+    },[routeChanged]);
     const fetchCountry = async () => {
         const response = await fetch(`https://restcountries.com/v3/name/${window.location.pathname.slice(9)}?fullText=true`);
         const deita = await response.json();
@@ -10,7 +16,7 @@ function CountryDetails(props){
     }
     useEffect(()=>{
         fetchCountry();
-    },[]);
+    },[routeChanged]);
     const findCountryBy3LetterSymbol = (neighborsArray) => {
         let borderingCountries = [];
         Object.entries(fetchedData).forEach((countryList)=>{
@@ -35,7 +41,7 @@ function CountryDetails(props){
                                 <span><strong>Population: </strong>{deita['population']}</span>
                                 <span><strong>Region: </strong>{deita['region']}</span>
                                 <span><strong>Sub-region: </strong>{deita['subregion']}</span>
-                                <span><strong>Capital: </strong>{deita['capital'][0]}</span>
+                                <span><strong>Capital: </strong>{deita['capital'] ? deita['capital'][0]:"Nothing here"}</span>
                             </div>
                             <div>
                                 <span><strong>Area: </strong>{deita['area']}</span>
@@ -59,11 +65,11 @@ function CountryDetails(props){
                         <div className="neighborCountries">
                             <span><strong>Neighbouring countries: </strong></span>
                             {deita['borders'] ? findCountryBy3LetterSymbol(deita['borders']).map((border, indx)=>{
-                                // console.log(border)
+                                console.log(border)
                                 return (
-                                    <button key={indx} onClick={()=>{
-                                        window.location.href=`/country/${border.toLowerCase()}`;
-                                    }}>{border}</button>
+                                    <Link key={indx} to={`/country/${border.toLowerCase()}`} onClick={()=>{
+                                        setRouteChanged(true);
+                                    }}>{border}</Link>
                                 )
                             }): <span>Nothing here RIP</span>}
                         </div>
