@@ -59,7 +59,7 @@ function CountryDetails(props){
                         <div className="neighborCountries">
                             <span><strong>Neighbouring countries: </strong></span>
                             {deita['borders'] ? findCountryBy3LetterSymbol(deita['borders']).map((border, indx)=>{
-                                console.log(border)
+                                // console.log(border)
                                 return (
                                     <button key={indx} onClick={()=>{
                                         window.location.href=`/country/${border.toLowerCase()}`;

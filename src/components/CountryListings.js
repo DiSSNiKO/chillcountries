@@ -23,7 +23,7 @@ function CountryListings(props){
           newAllData.push(country);
         });
       });
-      console.log(newAllData)
+      // console.log(newAllData)
       setAllData(newAllData);
     }
   },[chosenRegion]);
