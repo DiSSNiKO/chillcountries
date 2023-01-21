@@ -16,7 +16,7 @@ function SearchAndRegion(props){
             for(const country of fetchedData[`${kei}`]){
               if(country.name.common.toLowerCase().includes(val.toLowerCase())){
                 chosenCountries.push(country);
-                console.log(chosenCountries);
+                // console.log(chosenCountries);
               }
             }
           }
