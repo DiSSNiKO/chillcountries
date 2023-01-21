@@ -228,7 +228,8 @@ code {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin: auto;
-  gap: 25px;
+  column-gap: 40px;
+  row-gap: 40px;
 }
 .countryListingDetails {
   margin: 20px 0 0 15px;
@@ -236,7 +237,8 @@ code {
 }
 .countryName {
   font-weight: 600;
-  font-size: 2.2rem;
+  font-size: 2.75rem;
+  margin-bottom: 20px;
 }
 .countryDetail {
   font-weight: 500;

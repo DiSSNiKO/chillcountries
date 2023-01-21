@@ -42,9 +42,9 @@ function CountryListings(props){
                   <img src={country['flags'].png} alt="" />
                   <div className="countryListingDetails">
                     <div className="countryName">{country.name.common}</div>
-                    <div className="countryDetail">Population : {country.population}</div>
-                    <div className="countryDetail">Region : {country.region}</div>
-                    <div className="countryDetail">Capital : {country.capital}</div>
+                    <div className="countryDetail"><strong>Population : </strong>{country.population}</div>
+                    <div className="countryDetail"><strong>Region : </strong>{country.region}</div>
+                    <div className="countryDetail"><strong>Capital : </strong>{country.capital}</div>
                   </div>
                 </Link>
               </div>
